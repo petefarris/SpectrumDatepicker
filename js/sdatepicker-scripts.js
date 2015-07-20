@@ -1,7 +1,9 @@
   var CALENDAR = function () {
-	var wrap, label, 
-			months = ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"];
+	var wrap;
+    var label;  
+    var months = ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"];
 
+    //1. Initializer Function:: 
 		function init(newWrap) {
 			wrap  = $(newWrap || "#cal");
 			label = wrap.find("#label");
@@ -14,7 +16,9 @@
 
     //Switch calendar Months
     function switchMonth(next, month, year){ 
-        var curr = label.text().trim().split(" "), calendar, tempYear =  parseInt(curr[1], 10); 
+        var curr = label.text().trim().split(" "); 
+        var calendar; 
+        var tempYear =  parseInt(curr[1], 10); 
         
         //Change Months:: Expanded View
         if (!month) { 
@@ -43,7 +47,7 @@
             } 
         }
         
-        //Create the calendar and set date:: 
+    //Create the calendar and set date:: 
         calendar = createCal(year, month); 
         $("#cal-frame", wrap)
             .find(".curr")
@@ -119,11 +123,26 @@
         return createCal.cache[year][month];
     }; 
     
+    function dateSelect(){ 
+    //Click Events:: 
+      $('#cal-frame').on("click", "td", function() {
+            //capture day in variable
+            var clickDay = $(this).text();
+            //get Month and Year 
+            var clickMonth = $
+
+
+        });
+
+    }; 
+      
+    
     createCal.cache = {}; 
     return { 
            init:init, 
            switchMonth: switchMonth, 
-           createCal: createCal 
+           createCal: createCal,     
+           dateSelect: dateSelect
     }; 
     
 };  
