@@ -1,20 +1,16 @@
-var CALENDAR = function(){ 
-  //init Global variables
-  var wrap; 
-  var label;  
-  var months = ["Janurary", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; 
-    //Init the calendar widget:: 
-    function init(newWrap){ 
-        // Give appropriate values to wrap and label, and provide fallback for wrap
-        wrap    = $(newWrap || "#cal"); 
-        label   = wrap.find("#label"); 
-        wrap.find("#prev").bind("click.calendar", function () { switchMonth(false); }); 
-        wrap.find("#next").bind("click.calendar", function () { switchMonth(true);  }); 
-        label.bind("click", function () { switchMonth(null, new Date().getMonth(), new Date().getFullYear()); });        
-        //Ensures that appropraite label is shown : simulates click event:: 
-        label.click(); 
-        
-    } 
+  var CALENDAR = function () {
+	var wrap, label, 
+			months = ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"];
+
+		function init(newWrap) {
+			wrap  = $(newWrap || "#cal");
+			label = wrap.find("#label");
+				
+			wrap.find("#prev").bind("click.calender", function () { switchMonth(false); });
+			wrap.find("#next").bind("click.calender", function () { switchMonth(true); });
+			label.bind("click.calendar", function () { switchMonth(null, new Date().getMonth(), new Date().getFullYear() ); });			
+		}
+
     //Switch calendar Months
     function switchMonth(next, month, year){ 
         var curr = label.text().trim().split(" "), calendar, tempYear =  parseInt(curr[1], 10); 
