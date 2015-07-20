@@ -8,7 +8,8 @@
 				
 			wrap.find("#prev").bind("click.calender", function () { switchMonth(false); });
 			wrap.find("#next").bind("click.calender", function () { switchMonth(true); });
-			label.bind("click.calendar", function () { switchMonth(null, new Date().getMonth(), new Date().getFullYear() ); });			
+			label.bind("click.calendar", function () { switchMonth(null, new Date().getMonth(), new Date().getFullYear() ); });		
+            label.click(); //Set to current date
 		}
 
     //Switch calendar Months
